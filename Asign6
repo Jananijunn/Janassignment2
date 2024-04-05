@@ -1,1 +1,117 @@
+1)import java.util.Scanner;
 
+public class Dc {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        if (isDivisibleBySevenAndThirteen(number)) {
+            int quotientBy7 = number / 7;
+            int remainderBy7 = number % 7;
+            int quotientBy13 = number / 13;
+            int remainderBy13 = number % 13;
+
+            System.out.println(number + " is divisible by both 7 and 13.");
+            System.out.println("Quotient when divided by 7: " + quotientBy7);
+            System.out.println("Remainder when divided by 7: " + remainderBy7);
+            System.out.println("Quotient when divided by 13: " + quotientBy13);
+            System.out.println("Remainder when divided by 13: " + remainderBy13);
+        } else {
+            System.out.println(number + " is not divisible by both 7 and 13.");
+        }
+
+        scanner.close();
+    }
+
+    public static boolean isDivisibleBySevenAndThirteen(int number) {
+        return number % 7 == 0 && number % 13 == 0;
+    }
+}
+
+2)
+import java.util.Scanner;
+
+public class Numanalyzer {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int smallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE;
+        int sum = 0;
+        int count = 0;
+
+        boolean continueInput = true;
+
+        while (continueInput) {
+            System.out.print("Enter a number (enter -1 to stop): ");
+            int number = scanner.nextInt();
+
+            if (number == -1) {
+                continueInput = false;
+            } else {
+                sum += number;
+                count++;
+
+                if (number < smallest) {
+                    smallest = number;
+                }
+
+                if (number > largest) {
+                    largest = number;
+                }
+            }
+        }
+
+        if (count > 0) {
+            double average = (double) sum / count;
+
+            System.out.println("Largest number entered: " + largest);
+            System.out.println("Smallest number entered: " + smallest);
+            System.out.println("Average of all numbers entered: " + average);
+        } else {
+            System.out.println("No numbers entered.");
+        }
+
+        scanner.close();
+    }
+}
+
+
+3)
+
+import java.util.Scanner;
+
+public class TE {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter quantity purchased: ");
+        int quantity = scanner.nextInt();
+
+        System.out.print("Enter price per item: ");
+        double pricePerItem = scanner.nextDouble();
+
+        double totalExpenses = calculateTotalExpenses(quantity, pricePerItem);
+
+        System.out.println("Total expenses: $" + totalExpenses);
+
+        scanner.close();
+    }
+
+    public static double calculateTotalExpenses(int quantity, double pricePerItem) {
+        double totalExpenses = quantity * pricePerItem;
+
+        if (quantity > 50) {
+            totalExpenses *= 0.90; // Apply 10% discount
+        } else if (quantity >= 25 && quantity <= 50) {
+            totalExpenses *= 0.95; // Apply 5% discount
+        }
+
+        return totalExpenses;
+    }
+} 
